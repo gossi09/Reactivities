@@ -23,9 +23,9 @@ namespace API
                 var services = scop.ServiceProvider;
                 try
                 {
-                    // Creates the data base if it does not exist
-                    var context = services.GetRequiredService<DataContext>();
+                    DataContext context = services.GetRequiredService<DataContext>();
                     context.Database.Migrate();
+                    Seed.SeedData(context);
                 }
             
                 catch (Exception ex)
